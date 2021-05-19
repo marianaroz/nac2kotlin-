@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.nac2.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var bindings: FragmentHomeBinding
+    private var resp = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,9 +28,12 @@ class HomeFragment : Fragment() {
         val num1 = Integer.parseInt(bindings.input1.text.toString())
         val num2 = Integer.parseInt(bindings.input2.text.toString())
         bindings.next.setOnClickListener{
-            val resp = 0
-            return resp = ${num1+num2}
-            //resp = num1.plus(num2)
+            val num1 = Integer.parseInt(bindings.input1.text.toString())
+            val num2 = Integer.parseInt(bindings.input2.text.toString())
+
+
+            val action = HomeFragmentDirections.actionHomeFragmentToResultFragment(resp)
+            findNavController().navigate(action)
         }
     }
 
